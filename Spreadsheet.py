@@ -118,6 +118,9 @@ class Spreadsheet:
     def prepare_addSheet(self, sheetTitle, rows = 1000, cols = 26):
         self.requests.append({"addSheet": {"properties": {"title": sheetTitle, 'gridProperties': {'rowCount': rows, 'columnCount': cols}}}})
 
+    def prepare_deleteSheet(self, sheetId):
+        self.requests.append({"deleteSheet": {"sheetId": sheetId}})
+
     # Adds new sheet to current spreadsheet, sets as current sheet and returns it's id
     def addSheet(self, sheetTitle, rows = 1000, cols = 26):
         if self.spreadsheetId is None:
